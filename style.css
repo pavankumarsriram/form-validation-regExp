@@ -1,0 +1,37 @@
+.form-group,
+.form-control {
+  position: relative;
+}
+.floating > label {
+  top: 6px;
+  left: 8px;
+  position: absolute;
+  background-color: white;
+  padding: 0px 5px 0px 5px;
+  transition: 1s;
+  pointer-events: none;
+}
+.area-lable {
+  left: 34px;
+  bottom: 35px;
+  position: absolute;
+  transition: all 0.3s;
+  color: #999;
+}
+.form-control:focus ~ .area-lable {
+  top: -12px;
+  bottom: 0px;
+  background-color: white;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+.form-control:focus ~ label {
+  transform: translate(1px, -85%);
+  background-color: white;
+}
+
+.form-control:valid ~ label {
+  transform: translate(1px, -85%);
+  background-color: white;
+}

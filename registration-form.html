@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="text-center">Registration Form</h1>
+    <form class="container pt-4 border" name="registrationform" method="GET">
+      <div class="form-group floating">
+        <input
+          class="form-control floating"
+          type="text"
+          name="username"
+          id="user_name"
+          required
+          value=""
+        />
+        <label for="user_name">Username</label>
+        <span id="user_error" class="text-danger"></span>
+      </div>
+      <div class="form-group floating">
+        <input
+          class="form-control floating"
+          type="email"
+          name="email"
+          id="mail_id"
+          required
+          value=""
+        />
+        <label for="email_id">Email address</label>
+        <span id="mail_error" class="text-danger"></span>
+      </div>
+      <div class="form-group floating">
+        <input
+          class="form-control floating"
+          type="password"
+          name="password"
+          id="pwd"
+          required
+          value=""
+        />
+        <label for="pwd">Password</label>
+        <span id="pwd_error" class="text-danger"></span>
+      </div>
+      <div class="form-group floating">
+        <input
+          class="form-control floating"
+          type="password"
+          name="conform-password"
+          id="reptpwd"
+          required
+          value=""
+        />
+        <label for="reptpwd"> ConformPassword</label>
+        <span id="reptpwderror" class="text-danger"></span>
+      </div>
+
+      <div class="custom-control custom-checkbox pb-4">
+        <input type="checkbox" class="custom-control-input" id="customCheck1" />
+        <label class="custom-control-label" for="customCheck1"
+          >Remember me</label
+        >
+      </div>
+      <button type="submit" id="signup" class="btn">Login</button>
+    </form>
+    <script>
+      // username validation
+      function checkname() {
+        var nameRegex = /^[A-Za-z0-9 ]{3,20}$/;
+        let username = document.getElementById("user_name").value;
+        if (username.match(nameRegex)) {
+          document.getElementById("user_error").innerHTML = "";
+        } else {
+          document.getElementById("user_error").innerHTML =
+            "Please enter valid UserName";
+        }
+      }
+      // email validation
+      function checkemail() {
+        var email_id = /\S+@\S+\.\S+/;
+        let email = document.getElementById("mail_id").value;
+        if (email.match(email_id)) {
+          document.getElementById("mail_error").innerHTML = "";
+        } else {
+          document.getElementById("mail_error").innerHTML =
+            "Please enter valid email address";
+        }
+      }
+      // password validation
+      function checkpassword() {
+        var pwdreg = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        let password = document.getElementById("pwd").value;
+        if (password.match(pwdreg)) {
+          document.getElementById("pwd_error").innerHTML = "";
+        } else {
+          document.getElementById("pwd_error").innerHTML =
+            "Please enter valid password";
+        }
+      }
+      // password validation
+      function conformpassword() {
+        let password = document.getElementById("pwd").value;
+        let conform_password = document.getElementById("reptpwd").value;
+
+        if (password === conform_password) {
+          document.getElementById("reptpwderror").innerHTML = "";
+        } else {
+          document.getElementById("reptpwderror").innerHTML =
+            "Please enter same password";
+        }
+      }
+      document.getElementById("user_name").addEventListener("blur", checkname);
+      document.getElementById("mail_id").addEventListener("blur", checkemail);
+      document.getElementById("pwd").addEventListener("blur", checkpassword);
+      document.getElementById("pwd").addEventListener("blur", conformpassword);
+    </script>
+  </body>
+</html>
